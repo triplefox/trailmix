@@ -40,7 +40,7 @@ class Image
 
 class SFX
 {
-	public var id : ImageId;
+	public var id : SFXId;
 	public var data : Sound;
 	public var source : String;
 	public function new(id, data, source) 
@@ -50,7 +50,7 @@ class SFX
 
 class BGM
 {
-	public var id : ImageId;
+	public var id : BGMId;
 	public var data : Sound;
 	public var source : String;
 	public function new(id, data, source) 
