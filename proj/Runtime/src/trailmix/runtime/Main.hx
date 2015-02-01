@@ -176,18 +176,22 @@ class Item
  * We can expand on this with localizable images etc, although i don't have anything for image data yet...
  * Animations and FSM stuff can be done by compiling to Ivy code (although in the case of FSMs it may be easier to describe hardcoded algorithms first.)
  * 
- * Plans for asset support
+ * Plans for runtime asset support
  * 
- * I will use OpenFL's build system and decoders. This is the main reason to build on that platform, I think.
- * OpenFL is awful in some ways, but it's What I Know.
+ * 1. FLAC, OGG Vorbis audio
+ * 2. WebP images
  * 
- * An assumption we'll make about images is that our "source" is always a bitmapdata, even if we have to compile it from a vector asset.
+ * These have decoder implementations available. They are already in some use. They don't have patenting issues.
+ * I can compile everything else out to them without too much effort.
  * 
- * With sounds we'll distinguish between music (looped tracks) and SFX (one shots) - ehm, ambient soundtracks might be possible but
- * 	it would mean doing sequencing which is not really the primary goal.
+ * The bundling/preloader aspect shouldn't too terrible because I can offload that to OpenFL. What my code gets is a big binary blob, which it unpacks.
  * 
- * When _using_ sounds, we want music to exist in the context of scenes.
- * This is something I'll have to think about a little more.
+ * Plans for runtime rendering and I/O
+ * 
+ * 1. Bitmap display
+ * 2. Multichannel audio triggers
+ * 3. Click and drag mouse/touch inputs
+ * 4. Textfield input
  * 
  * */
 
