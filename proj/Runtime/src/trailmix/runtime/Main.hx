@@ -74,7 +74,7 @@ class Body
 	public var variants : Array<Array<Int>>; /* locale [ array of parsable int tuples ] */
 	public var source : String;
 	public function new(id, variants, source) 
-	{ this.id = id; this.variants = variants; this.source = source;; }
+	{ this.id = id; this.variants = variants; this.source = source; }
 	public function toString() { return source; }
 }
 
@@ -104,7 +104,7 @@ class ReferenceData
 	public var bodyd : Array<BodyId>;
 	public function new(intd, textd, itemd, algod, bodyd, flagd) {
 		this.intd = intd; this.textd = textd; this.itemd = itemd; 
-		this.algod = intad; this.bodyd = bodyd; this.flagd = flagd;			
+		this.algod = algod; this.bodyd = bodyd; this.flagd = flagd;			
 	}
 }
 
