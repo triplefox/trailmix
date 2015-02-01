@@ -1,8 +1,10 @@
 package trailmix.runtime;
 
+import flash.display.BitmapData;
 import flash.display.Sprite;
 import flash.events.Event;
 import flash.Lib;
+import openfl.media.Sound;
 
 abstract Bitfield(UInt)
 {
@@ -22,6 +24,39 @@ abstract AlgorithmId(Int) { inline public function new(i0 : Int) { this = i0; }}
 abstract ItArchetypeId(Int) { inline public function new(i0 : Int) { this = i0; }}
 abstract AlArchetypeId(Int) { inline public function new(i0 : Int) { this = i0; }}
 abstract BitfieldId(Int) { inline public function new(i0 : Int) { this = i0; }}
+abstract ImageId(Int) { inline public function new(i0 : Int) { this = i0; }}
+abstract SFXId(Int) { inline public function new(i0 : Int) { this = i0; }}
+abstract BGMId(Int) { inline public function new(i0 : Int) { this = i0; }}
+
+class Image
+{
+	public var id : ImageId;
+	public var variants : Array<BitmapData>;
+	public var source : String;
+	public function new(id, variants, source) 
+	{ this.id = id; this.variants = variants; this.source = source; }
+	public function toString():String { return source; }
+}
+
+class SFX
+{
+	public var id : ImageId;
+	public var data : Sound;
+	public var source : String;
+	public function new(id, data, source) 
+	{ this.id = id; this.data = data; this.source = source; }
+	public function toString():String { return source; }
+}
+
+class BGM
+{
+	public var id : ImageId;
+	public var data : Sound;
+	public var source : String;
+	public function new(id, data, source) 
+	{ this.id = id; this.data = data; this.source = source; }
+	public function toString():String { return source; }
+}
 
 class Text
 {
@@ -140,6 +175,19 @@ class Item
  * "variants" indicates which localization is going to be used, where it's relevant.
  * We can expand on this with localizable images etc, although i don't have anything for image data yet...
  * Animations and FSM stuff can be done by compiling to Ivy code (although in the case of FSMs it may be easier to describe hardcoded algorithms first.)
+ * 
+ * Plans for asset support
+ * 
+ * I will use OpenFL's build system and decoders. This is the main reason to build on that platform, I think.
+ * OpenFL is awful in some ways, but it's What I Know.
+ * 
+ * An assumption we'll make about images is that our "source" is always a bitmapdata, even if we have to compile it from a vector asset.
+ * 
+ * With sounds we'll distinguish between music (looped tracks) and SFX (one shots) - ehm, ambient soundtracks might be possible but
+ * 	it would mean doing sequencing which is not really the primary goal.
+ * 
+ * When _using_ sounds, we want music to exist in the context of scenes.
+ * This is something I'll have to think about a little more.
  * 
  * */
 
